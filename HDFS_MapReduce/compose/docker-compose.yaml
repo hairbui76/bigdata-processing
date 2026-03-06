@@ -1,0 +1,63 @@
+services:
+  node1:
+    build: .
+    container_name: node1
+    hostname: node1
+    environment:
+      - HADOOP_ROLE=namenode
+    ports:
+      - "9870:9870" # HDFS Web UI
+      - "9000:9000" # HDFS
+      - "8088:8088" # YARN Web UI
+    volumes:
+      - namenode_data:/home/hadoop/hadoopdata/namenode
+      - shared_ssh:/home/hadoop/.ssh/shared
+    networks:
+      hadoop_net:
+        ipv4_address: 172.25.0.10
+    depends_on:
+      - node2
+      - node3
+
+  node2:
+    build: .
+    container_name: node2
+    hostname: node2
+    environment:
+      - HADOOP_ROLE=datanode
+    ports:
+      - "9864:9864" # DataNode Web UI
+    volumes:
+      - datanode2_data:/home/hadoop/hadoopdata/datanode
+      - shared_ssh:/home/hadoop/.ssh/shared
+    networks:
+      hadoop_net:
+        ipv4_address: 172.25.0.11
+
+  node3:
+    build: .
+    container_name: node3
+    hostname: node3
+    environment:
+      - HADOOP_ROLE=datanode
+    ports:
+      - "9865:9864" # DataNode Web UI (mapped to different host port)
+    volumes:
+      - datanode3_data:/home/hadoop/hadoopdata/datanode
+      - shared_ssh:/home/hadoop/.ssh/shared
+    networks:
+      hadoop_net:
+        ipv4_address: 172.25.0.12
+
+volumes:
+  namenode_data:
+  datanode2_data:
+  datanode3_data:
+  shared_ssh:
+
+networks:
+  hadoop_net:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.25.0.0/16
