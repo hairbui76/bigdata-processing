@@ -273,6 +273,6 @@ Truy cập vào giao diện web của NameNode:
 
 - NameNode UI: http://node1:9870
 
-![namenode-ui](image.png)
+![namenode-ui](./namenode-ui.png)
 
 - ResourceManager UI: http://node1:8088
