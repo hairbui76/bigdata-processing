@@ -133,6 +133,8 @@ nano $HADOOP_HOME/etc/hadoop/core-site.xml
 ```
 
 ```bash
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
 <configuration>
   <property>
     <name>fs.defaultFS</name>
@@ -152,6 +154,8 @@ nano $HADOOP_HOME/etc/hadoop/hdfs-site.xml
 ```
 
 ```bash
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
 <configuration>
   <!-- Replication factor = 2 -->
   <property>
@@ -186,6 +190,8 @@ nano $HADOOP_HOME/etc/hadoop/mapred-site.xml
 ```
 
 ```bash
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
 <configuration>
   <property>
     <name>mapreduce.framework.name</name>
@@ -213,6 +219,8 @@ nano $HADOOP_HOME/etc/hadoop/mapred-site.xml
 #### yarn-site.xml
 
 ```bash
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
 <configuration>
   <property>
     <name>yarn.nodemanager.aux-services</name>
