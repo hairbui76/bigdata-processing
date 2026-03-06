@@ -246,6 +246,13 @@ mkdir -p /home/hadoop/hadoopdata/namenode
 mkdir -p /home/hadoop/hadoopdata/datanode
 ```
 
+#### Đồng bộ cấu hình từ node1 sang node2 và node3
+
+```bash
+scp $HADOOP_HOME/etc/hadoop/* hadoop@node1:$HADOOP_HOME/etc/hadoop/
+scp $HADOOP_HOME/etc/hadoop/* hadoop@node2:$HADOOP_HOME/etc/hadoop/
+```
+
 ### Format HDFS và khởi động cluster
 
 Trên node1, chạy lệnh sau để format HDFS:
